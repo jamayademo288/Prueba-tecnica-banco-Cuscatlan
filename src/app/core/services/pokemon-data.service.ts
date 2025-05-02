@@ -29,7 +29,7 @@ export class PokemonDataService {
       requests.push(request);
     }
 
-    return forkJoin(requests); // Espera a que terminen los 150 llamados
+    return forkJoin(requests);
   }
 
 }

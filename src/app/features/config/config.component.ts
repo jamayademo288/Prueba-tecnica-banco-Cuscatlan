@@ -17,18 +17,18 @@ export class ConfigComponent {
 
   mostrarLoading() {
     this.loading = true;
-    console.log('loading iniciado');
+    //console.log('loading iniciado');
   }
 
   finalizoCarga() {
-    console.log('📦 Lista cargada, desactivando loading...');
+    //console.log('📦 Lista cargada, desactivando loading...');
     this.loading = false;
   }
 
   name(value: string) {
     this.nameTrainer = value;
     this.cdr.detectChanges();
-    console.log(this.nameTrainer);
+    //console.log(this.nameTrainer);
   }
 
   editProfile(){

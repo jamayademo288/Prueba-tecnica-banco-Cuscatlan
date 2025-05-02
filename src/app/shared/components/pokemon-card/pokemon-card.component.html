@@ -23,7 +23,6 @@
   </button>
   </div>
 
-  <!-- Scroll virtual -->
   <cdk-virtual-scroll-viewport
     itemSize="200"
     class="h-[550px] w-full overflow-auto pr-2"
@@ -33,14 +32,12 @@
         *cdkVirtualFor="let pokemon of pokemonsSeleccionados"
         class="bg-[#F6F7F8] rounded-xl p-4 flex gap-4 items-center shadow-sm"
       >
-        <!-- Imagen -->
         <img
           [src]="pokemon.sprites.other.home.front_default"
           alt="{{ pokemon.name }}"
           class="w-28 h-28 object-contain"
         />
 
-        <!-- Info -->
         <div class="flex-1">
           <h3 class="text-xl font-bold capitalize text-[#002A61]">{{ pokemon.name }}</h3>
           <p class="text-sm text-gray-600 mb-2 capitalize">
@@ -61,7 +58,7 @@
               </div>
             </div>
           </div>
-          <!-- Estadísticas -->
+
           <div *ngIf="editCard">
             <div *ngFor="let stat of pokemon.stats; let i = index" class="mb-3" >
             <label class="flex justify-between items-center mb-1 text-sm text-gray-700 capitalize">

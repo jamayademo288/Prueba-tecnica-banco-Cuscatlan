@@ -34,14 +34,13 @@ export class ImageUploadedComponent implements OnInit{
 
   calcularEdad(fecha: string): string {
     const [dia, mes, anio] = fecha.split('/').map(Number);
-    const nacimiento = new Date(anio, mes - 1, dia); // mes -1 porque en JS enero es 0
+    const nacimiento = new Date(anio, mes - 1, dia);
     const hoy = new Date();
 
     let edad = hoy.getFullYear() - nacimiento.getFullYear();
     const mesActual = hoy.getMonth();
     const diaActual = hoy.getDate();
 
-    // Resta un año si todavía no ha cumplido este año
     if (
       mesActual < nacimiento.getMonth() ||
       (mesActual === nacimiento.getMonth() && diaActual < nacimiento.getDate())

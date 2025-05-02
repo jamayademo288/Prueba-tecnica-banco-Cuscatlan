@@ -10,11 +10,11 @@ export class SelectionComponent {
 
   mostrarLoading() {
     this.loading = true;
-    console.log('loading iniciado');
+    //console.log('loading iniciado');
   }
 
   finalizoCarga() {
-    console.log('📦 Lista cargada, desactivando loading...');
+    //console.log('📦 Lista cargada, desactivando loading...');
     this.loading = false;
   }
 }

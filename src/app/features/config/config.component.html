@@ -1,14 +1,11 @@
 <div *ngIf="!loading">
   <div class="titulo w-full px-4 mt-1">
     <div class="flex items-start space-x-2">
-      <!-- <img src="assets/images/arrow_back.png" alt="Atrás" class="w-3.5 h-4 mt-3" /> -->
+
       <div class="flex items-center justify-between gap-4">
-        <!-- Texto de saludo -->
         <p class="text-[40px] font-bold text-black font-poppins">
           ¡Hola {{ nameTrainer }}!
         </p>
-
-        <!-- Botón de editar -->
         <button
           (click)="editProfile()"
           class="flex items-center gap-1 text-sm text-sky-800 border border-sky-800 px-3 py-1.5 rounded-md hover:bg-sky-800 hover:text-white transition"

@@ -40,21 +40,17 @@ export class PokemonListComponent implements OnInit {
   }
 
   get150Pokemons() {
-    //setTimeout(() => this.loadingStart.emit(), 0);
+
     this.pokemonDataService.obtenerPrimeros150()
       .pipe(
         tap((data) => {
           this.pokemons = data;
           this.pokemonsGrouped = this.groupPokemonsInRows(data, 3);
-          // if (this.pokemonsGrouped.length > 0) {
-          //   this.dataListaCargada.emit(true);
-          // }
       })
       )
     .subscribe({
       error: (err) => {
         console.error('Error al cargar pokemones:', err);
-        //this.finalizoCarga.emit(); // también emite en caso de error
       }
     });
 
@@ -88,7 +84,6 @@ export class PokemonListComponent implements OnInit {
     const index = this.seleccionados.findIndex(p => p.id === pokemon.id);
 
     if (index >= 0) {
-      // Ya estaba seleccionado, lo quitamos
       this.seleccionados.splice(index, 1);
     } else {
       if (this.seleccionados.length < 3) {
@@ -106,7 +101,7 @@ export class PokemonListComponent implements OnInit {
   guardarEquipo() {
     console.log('Equipo guardado:', this.seleccionados);
     const datosCompletos = {
-      ...this.userData, // o tu objeto original
+      ...this.userData,
       pokemonesSeleccionados: this.seleccionados
     };
     this.loadingStart.emit();
@@ -115,7 +110,7 @@ export class PokemonListComponent implements OnInit {
           tap(() => this.dataListaCargada.emit()),
           tap(() => this.router.navigate(['config']))
         ).subscribe();
-    // Ej: localStorage.setItem('equipo', JSON.stringify(this.seleccionados));
+
   }
 
   obtener(){
