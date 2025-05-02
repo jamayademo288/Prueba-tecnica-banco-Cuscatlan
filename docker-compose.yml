@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  pokemon-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pokemon-app
+    ports:
+      - "80:80"
+    restart: always

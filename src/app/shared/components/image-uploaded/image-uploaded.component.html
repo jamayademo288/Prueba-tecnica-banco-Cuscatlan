@@ -1,0 +1,35 @@
+<div class="relative w-[392px] h-[600px] bg-[#FFC600] rounded-[50px] flex flex-col items-center pt-6 shadow-lg font-poppins">
+
+  <h2 *ngIf="!isTrainer" class="text-[35px] font-bold text-[#004772] text-center mb-4">{{ userData.nombre }}</h2>
+
+  <div class="w-full flex items-center justify-between px-10 mb-4" *ngIf="isTrainer">
+    <span class="text-[20px] text-[#004772] font-medium">Entrenador</span>
+    <img src="assets/images/start.png" alt="medalla" class="w-[59px] h-[53.1px]">
+  </div>
+
+  <div class="w-[269px] h-[269px] rounded-full bg-[#E7EFF5] border-[14px] border-white flex items-center justify-center mt-5 mb-12 overflow-hidden">
+    <img
+      [src]="imagenBase64"
+      alt="icono"
+      [ngClass]="imagenBase64 ? 'w-full h-full object-cover' : 'w-[100px] h-[100px]'"
+      class="rounded-full transition-all duration-300"
+    />
+  </div>
+
+  <div class="w-full px-10 text-sm space-y-2">
+    <div class="flex justify-between font-semibold text-gray-800 text-[24px]">
+      <span class="text-left">Pasatiempo:</span>
+      <span class="font-normal text-right">{{ userData.pasatiempo }}</span>
+    </div>
+
+    <div class="flex justify-between font-semibold text-gray-800 text-[24px]">
+      <span class="text-left">Edad:</span>
+      <span class="font-normal text-right">{{ edad }} años</span>
+    </div>
+
+    <div class="flex justify-between font-semibold text-gray-800 text-[24px]" *ngIf="+edad >= 18">
+      <span class="text-left">DUI:</span>
+      <span class="font-normal text-right">{{ userData.documentos }}</span>
+    </div>
+  </div>
+</div>

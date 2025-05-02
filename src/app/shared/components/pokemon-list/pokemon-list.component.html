@@ -1,0 +1,60 @@
+<div class="pokemon-container">
+
+  <h2 class="text-2xl font-semibold text-sky-900">Pokémon</h2>
+  <p class="text-gray-500 text-sm mb-2">
+    Selecciona 3 Pokémon para que sean parte de tu equipo
+  </p>
+
+  <div class="relative mb-4">
+    <input
+      #busquedaInput
+      type="text"
+      (input)="onBuscar($event)"
+      placeholder="🔍 Buscar por índice, nombre..."
+      class="pokemon-search"
+    />
+  </div>
+
+  <cdk-virtual-scroll-viewport itemSize="150" class="pokemon-viewport">
+    <div *cdkVirtualFor="let row of pokemonsGrouped" class="grid grid-cols-3 gap-x-4 gap-y-3 p-2">
+      <ng-container *ngFor="let pokemon of row">
+        <div
+          class="pokemon-card"
+          (click)="toggleSeleccion(pokemon)"
+          [class.seleccionado]="estaSeleccionado(pokemon)"
+        >
+          <div
+            class="pokemon-overlay"
+            [ngClass]="estaSeleccionado(pokemon) ? 'bg-yellow-400' : 'bg-gray-300'"
+          ></div>
+
+          <div class="pokemon-contenido">
+            <img
+              [src]="pokemon.sprites.other.home.front_default"
+              alt="{{ pokemon.name }}"
+              class="pokemon-image"
+            />
+            <div class="pokemon-shadow"></div>
+          </div>
+
+          <div class="pokemon-base">
+            <div class="pokemon-info">
+              <span>#{{ pokemon.id | number: '3.0' }}</span>
+              <span class="capitalize">{{ pokemon.name }}</span>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </cdk-virtual-scroll-viewport>
+
+  <button [disabled]="seleccionados.length !== 3"
+    [ngClass]="{
+      'bg-gray-200 text-gray-500 cursor-not-allowed': seleccionados.length !== 3,
+      'bg-[#01426A] text-white hover:bg-[#013a5e] cursor-pointer': seleccionados.length === 3
+    }"
+    class="block mx-auto mt-6 w-[222px] h-[50px] rounded-md font-semibold transition-all text-center" (click)="guardarEquipo()">
+    Guardar
+  </button>
+
+</div>

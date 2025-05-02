@@ -1,0 +1,60 @@
+<div class="perfil-container">
+  <form [formGroup]="perfilForm" class="perfil-form">
+    <div class="avatar-card">
+      <h2 class="text-[30px] font-normal text-black text-center leading-none mb-4">Imagen perfil</h2>
+      <div class="avatar-frame">
+        <img
+          [src]="imagenBase64 || 'assets/images/icon_shape.png'"
+          alt="icono"
+          [ngClass]="imagenBase64 ? 'w-full h-full object-cover' : 'w-[100px] h-[100px]'"
+          class="rounded-full transition-all duration-300"
+        />
+      </div>
+
+      <div *ngIf="hasImage">
+        <label class="input-avatar-label">
+          <span>Adjunta un foto</span>
+          <img src="assets/images/cloud_upload.png" alt="subir" class="w-6 h-5 absolute right-4 top-1/2 transform -translate-y-1/2 mt-2" />
+          <input formControlName="imageAvatar" type="file" hidden (change)="onFileSelected($event)" />
+        </label>
+      </div>
+      <div *ngIf="!hasImage">
+        <label class="input-avatar-label">
+          <span>{{ fileName }}</span>
+          <img src="assets/images/restore.png" alt="subir" class="w-6 h-5 absolute right-4 top-1/2 transform -translate-y-1/2 mt-2" (click)="eliminarImagen()" />
+        </label>
+      </div>
+    </div>
+
+    <div class="user-info">
+      <h2 class="text-2xl font-semibold text-sky-900">Tu información</h2>
+      <p class="text-gray-500 text-sm mb-2">Completa la siguiente información para completar tu perfil</p>
+
+      <input type="text" placeholder="Nombre*" formControlName="nombre" class="user-input" />
+
+      <select formControlName="pasatiempo" class="appearance-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-3 h-[50px]">
+        <option value="" disabled selected class="text-gray-400">Selecciona un pasatiempo</option>
+        <option value="leer">Leer</option>
+        <option value="deporte">Hacer deporte</option>
+        <option value="musica">Escuchar música</option>
+        <option value="viajar">Viajar</option>
+      </select>
+
+      <div class="relative max-w-sm w-full">
+        <input placeholder="Cumpleaños" formControlName="cumpleanos" datepicker datepicker-autohide id="datepicker-autohide" type="text" (blur)="onFechaChange($event)"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-4 p-2.5 placeholder-gray-400" />
+      </div>
+
+      <input type="text" formControlName="documento" placeholder="Documento*" (input)="onDocumentoInput($event)" class="user-input" />
+      <div *ngIf="perfilForm.get('documento')?.invalid && perfilForm.get('documento')?.touched" class="text-red-600 text-sm mt-1">
+        El documento debe tener el formato 12345678-9
+      </div>
+
+      <button type="submit" [disabled]="perfilForm.invalid"
+        [ngClass]="perfilForm.invalid ? 'user-button input-disabled' : 'user-button input-enabled'"
+        (click)="onSaveUser()">
+        Continuar
+      </button>
+    </div>
+  </form>
+</div>

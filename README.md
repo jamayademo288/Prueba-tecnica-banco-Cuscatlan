@@ -1,14 +1,25 @@
 # PokemonApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17+.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
+## Features
+
+- Reactive form to create a user profile (name, birthday, avatar, document).
+- Age-based validation (DUI only visible for 18+).
+- Image upload and base64 preview.
+- Pokémon list loaded from [PokeAPI](https://pokeapi.co/) with virtual scroll.
+- Select up to 3 Pokémon with visual feedback.
+- Summary view with editable stats via sliders.
+- Stats colored.
+- Data persisted in `localStorage`.
+
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+ng generate directive|pipe|service|class|guard|interface|enum|module
 
 ## Build
 

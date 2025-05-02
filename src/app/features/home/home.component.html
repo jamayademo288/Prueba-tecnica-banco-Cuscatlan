@@ -1,0 +1,26 @@
+
+<div *ngIf="!loading">
+  <div class="titulo w-full px-4 mt-1">
+    <div class="flex items-start space-x-2">
+      <img src="assets/images/arrow_back.png" alt="Atrás" class="w-3.5 h-4 mt-3" />
+      <div>
+        <h1 class="text-[35px] font-bold text-sky-900">
+          ¡<span class="font-poppins text-[24px] font-bold">Hola!</span> Configuremos tu perfil
+        </h1>
+        <p class="font-poppins text-[18px] text-gray-500 mt-1">Queremos conocerte mejor.</p>
+      </div>
+    </div>
+  </div>
+
+  <div>
+  <app-form
+    (loadingStart)="mostrarLoading()"
+    (loadingEnd)="ocultarLoading()">
+  </app-form>
+  </div>
+</div>
+
+<div *ngIf="loading" class="fixed top-0 left-0 w-full h-full bg-white bg-opacity-80 z-50 flex justify-center items-center">
+  <app-loading></app-loading>
+</div>
+

@@ -1,0 +1,44 @@
+.pokemon-viewport {
+  @apply w-[534px] h-[428px] overflow-auto mx-auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.pokemon-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.pokemon-card {
+  @apply relative w-[163px] h-[138px] bg-white rounded-xl shadow-md flex flex-col items-center justify-between overflow-hidden transition-all cursor-pointer transform;
+}
+
+.pokemon-card.seleccionado {
+  @apply scale-105;
+}
+
+.pokemon-overlay {
+  @apply absolute bottom-0 w-full h-[60%] rounded-xl z-0 transition-colors;
+}
+
+.pokemon-contenido {
+  @apply flex flex-col items-center justify-center relative flex-1 pt-2 z-10;
+}
+
+.pokemon-image {
+  @apply w-[96.64px] h-[103.56px] object-contain;
+}
+
+.pokemon-shadow {
+  @apply w-[66px] h-[5px] bg-gray-400 rounded-full;
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.pokemon-base {
+  @apply w-full flex items-end justify-center z-10;
+}
+
+.pokemon-info {
+  @apply bg-[#002A61] text-white text-xs font-bold px-2 py-1 rounded-full w-[90%] flex justify-between items-center mb-2;
+}
